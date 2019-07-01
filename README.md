@@ -1,6 +1,11 @@
 # WFC with Node.JS example
 
-## Installatiob
+## Requirement
+
+-   Node.js
+-   npm
+
+## Installation
 
 1. Download repository and open with terminal
 
@@ -22,4 +27,6 @@ npm install nodemon
 nodemon
 ```
 
-_Image output will be in /src/assets/output_
+**Put your source and json files in /src/data/**
+
+**Image output will be in /src/assets/output/**
