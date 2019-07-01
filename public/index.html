@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="wfc.js"></script>
+		<style>
+			canvas {
+				border: 1px solid black;
+				image-rendering: pixelated;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="output" width="200" height="200"></canvas>
+		<script>
+			var outputWidth = 50;
+			var outputHeight = 50;
+			var img_url_to_data = function(path, callback) {
+				var img = document.createElement('img');
+				img.src = path;
+				img.onload = function(e) {
+					console.log(this.width, this.height);
+					var c = document.createElement('canvas');
+					c.width = this.width;
+					c.height = this.height;
+					var ctx = c.getContext('2d');
+					ctx.drawImage(this, 0, 0);
+					callback(ctx.getImageData(0, 0, this.width, this.height));
+				};
+			};
+			var start = function(id) {
+				output = document.getElementById('output');
+				ctx = output.getContext('2d');
+				imgData = ctx.createImageData(outputWidth, outputHeight);
+				// input, width, height, N, outputWidth, outputHeight, periodicInput, periodicOutput, symmetry, ground
+				model = new OverlappingModel(
+					id.data,
+					id.width,
+					id.height,
+					2,
+					outputWidth,
+					outputHeight,
+					true,
+					false,
+					1,
+					0
+				);
+				//seed, limit
+				var success = model.generate(Math.random, 0);
+				model.graphics(imgData.data);
+				ctx.putImageData(imgData, 0, 0);
+				console.log(success);
+				if (success == false) {
+					start(id);
+				} else {
+					var world = [];
+					for (var y = 0; y < outputWidth; y++) {
+						var row = [];
+						for (var x = 0; x < outputHeight; x++) {
+							var colormap = {
+								'0:0:0:255': 1, //black
+								'255:255:255:255': 0 //white
+							};
+							var color = get_pixel(imgData, x, y).join(':');
+							row.push(colormap[color]);
+						}
+						world.push(row);
+					}
+					console.log(world);
+				}
+			};
+			function get_pixel(imgData, x, y) {
+				var index = y * imgData.width + x;
+				var i = index * 4,
+					d = imgData.data;
+				return [d[i], d[i + 1], d[i + 2], d[i + 3]];
+			}
+
+			img_url_to_data('test.png', start);
+		</script>
+	</body>
+</html>

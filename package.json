@@ -1,0 +1,28 @@
+{
+	"name": "wfc-interactive-app",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://siaolichi@github.com/siaolichi/wfc-interactive-app.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/siaolichi/wfc-interactive-app/issues"
+	},
+	"homepage": "https://github.com/siaolichi/wfc-interactive-app#readme",
+	"dependencies": {
+		"express": "^4.17.1",
+		"wavefunctioncollapse": "^1.0.0"
+	},
+	"devDependencies": {
+		"jimp": "^0.6.4",
+		"seed-random": "^2.2.0"
+	}
+}
