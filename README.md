@@ -1,3 +1,5 @@
+**CODE FROM [Javascripyt port of Wave Function Collapse](https://github.com/kchapelier/wavefunctioncollapse)**
+
 # WFC with Node.JS example
 
 ## Requirement
