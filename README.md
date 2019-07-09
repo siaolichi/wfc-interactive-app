@@ -29,6 +29,6 @@ npm install nodemon
 nodemon
 ```
 
-**Put your source and json files in /src/data/**
+**Put your source and json files in /src/assets/data/**
 
 **Image output will be in /src/assets/output/**
