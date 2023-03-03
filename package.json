@@ -22,7 +22,7 @@
 		"wavefunctioncollapse": "^1.0.0"
 	},
 	"devDependencies": {
-		"jimp": "^0.6.4",
+		"jimp": "^0.22.7",
 		"seed-random": "^2.2.0"
 	}
 }
